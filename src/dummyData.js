@@ -36,7 +36,7 @@ const dummyData = () => ({
       author: 'Bessel van der Kolk M.D.',
       category: 'Drama',
     },
-  ]
+  ],
 });
 
 export default dummyData;

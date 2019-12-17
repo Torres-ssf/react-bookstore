@@ -12,7 +12,8 @@ class BookList extends React.Component {
     const { book } = this.props;
 
     const books = book.map(e => (
-      <Book id={e.id}
+      <Book
+        id={e.id}
         title={e.title}
         author={e.author}
         category={e.category}
@@ -37,7 +38,7 @@ BookList.propTypers = {
 };
 
 const mapStateToProps = (state) => {
-  const { book } = state
+  const { book } = state;
   return {
     book,
   };
