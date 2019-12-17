@@ -1,0 +1,75 @@
+.App {
+  text-align: center;
+}
+
+.table {
+  border: 1px solid black;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr 3fr 2fr 2fr;
+  grid-auto-rows: 60px;
+  width: 70%;
+}
+
+.table > span {
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 60px;
+  line-height: 60px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 16px;
+}
+
+.table > span:nth-child(-n+4) {
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.form > input {
+  border-radius: .2em;
+  border: 1px solid #D3D3D3;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin: 0 auto;
+  height: 40px;
+  padding: 6px 12px;
+  width: 280px;
+}
+
+label {
+  font-size: 1.1rem;
+  margin: 16px 0 10px;
+}
+
+select {
+  margin: 0 auto;
+  height: 30px;
+  font-size: .9rem;
+  width: 100px;
+}
+
+button {
+  background-color: white;
+  border: 1px solid black;
+  font-size: 1rem;
+  padding: 12px 6px;
+  margin: 30px auto;
+  width: 140px;
+  transition: 400ms;
+}
+
+button:hover {
+  background-color: rgb(129, 148, 236);
+  border-color: #E1F2FE;
+  color: white;
+  transition: 400ms;
+}
+
