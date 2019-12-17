@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 
-class BookList extends React.Component {
-  constructor(props) {
+class BookList extends React.Component { // eslint-disable-line
+  constructor(props) { // eslint-disable-line
     super(props);
   }
 
