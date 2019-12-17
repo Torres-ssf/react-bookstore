@@ -33,7 +33,7 @@ class BookList extends React.Component { // eslint-disable-line
   }
 }
 
-BookList.propTypers = {
+BookList.propTypes = {
   book: PropTypes.arrayOf(PropTypes.object),
 };
 

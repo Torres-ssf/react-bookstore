@@ -7,17 +7,19 @@ class BookForm extends React.Component { // eslint-disable-line
 
   render() {
     const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi', 'Drama'];
-    const options = categories.map((e, i) => <option key={`${e}-`} value={e}>{e}</option>);
+    const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
 
     return (
       <div>
         <h2>Add New Book</h2>
         <form className="form">
-          <label htmlFor="book-name">Name: </label>
-          <input id="book-name" type="text" placeholder="book name" required />
+          <label htmlFor="book-name">
+            Name:
+            <input id="book-name" type="text" placeholder="book name" required />
+          </label>
           <label htmlFor="book-author">Author: </label>
           <input id="book-author" type="text" placeholder="book author" required />
-          <label htmlFor="book-category" >Category: </label>
+          <label htmlFor="book-category">Category: </label>
           <select id="book-category" name="dropdown">
             {options}
           </select>
