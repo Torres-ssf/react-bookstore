@@ -10,7 +10,7 @@ const Book = (props) => {
   ];
 
   return arr;
-}
+};
 
 Book.propTypes = {
   id: PropTypes.number.isRequired,

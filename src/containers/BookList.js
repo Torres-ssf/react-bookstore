@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Book from '../components/Book';
 import PropTypes from 'prop-types';
+import Book from '../components/Book';
 
 class BookList extends React.Component {
   constructor(props) {
@@ -11,11 +11,14 @@ class BookList extends React.Component {
   render() {
     const { book } = this.props;
 
-    const books = book.map((e) => <Book id={e.id}
-      title={e.title}
-      author={e.author}
-      category={e.category}
-      key={e.id} />);
+    const books = book.map(e => (
+      <Book id={e.id}
+        title={e.title}
+        author={e.author}
+        category={e.category}
+        key={e.id}
+      />
+    ));
 
     return (
       <div className="table">
@@ -36,8 +39,8 @@ BookList.propTypers = {
 const mapStateToProps = (state) => {
   const { book } = state
   return {
-    book
-  }
+    book,
+  };
 };
 
 export default connect(mapStateToProps, null)(BookList);

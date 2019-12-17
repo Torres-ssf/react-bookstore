@@ -5,7 +5,7 @@ const bookReducer = (state = [], action) => {
     case CREATE_BOOK:
       return [
         ...state,
-        action.book
+        action.book,
       ];
 
     case REMOVE_BOOK:
@@ -14,6 +14,6 @@ const bookReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default bookReducer;
