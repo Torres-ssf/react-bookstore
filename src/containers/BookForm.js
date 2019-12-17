@@ -15,14 +15,28 @@ class BookForm extends React.Component { // eslint-disable-line
         <form className="form">
           <label htmlFor="book-name">
             Name:
-            <input id="book-name" type="text" placeholder="book name" required />
+            <input
+              id="book-name"
+              type="text"
+              placeholder="book name"
+              required
+            />
           </label>
-          <label htmlFor="book-author">Author: </label>
-          <input id="book-author" type="text" placeholder="book author" required />
-          <label htmlFor="book-category">Category: </label>
-          <select id="book-category" name="dropdown">
-            {options}
-          </select>
+          <label htmlFor="book-author">
+            Author:
+            <input
+              id="book-author"
+              type="text"
+              placeholder="book author"
+              required
+            />
+          </label>
+          <label htmlFor="book-category">
+            Category:
+            <select id="book-category" name="dropdown">
+              {options}
+            </select>
+          </label>
           <button type="submit">Add New Book</button>
         </form>
       </div>
