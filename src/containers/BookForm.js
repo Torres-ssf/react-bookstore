@@ -17,6 +17,7 @@ class BookForm extends React.Component { // eslint-disable-line
             Name:
             <input
               id="book-name"
+              className="book-input"
               type="text"
               placeholder="book name"
               required
@@ -26,6 +27,7 @@ class BookForm extends React.Component { // eslint-disable-line
             Author:
             <input
               id="book-author"
+              className="book-input"
               type="text"
               placeholder="book author"
               required
