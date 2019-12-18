@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bookCategories } from '../utility/bookCategories';
 
 const CategoryFilter = (props) => {
-
   const { handleFilter } = props;
   const categories = ['All', ...bookCategories];
   const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
@@ -23,5 +23,9 @@ const CategoryFilter = (props) => {
     </label>
   );
 };
+
+CategoryFilter.propTypes = {
+  handleFilter: PropTypes.func.isRequired,
+}
 
 export default CategoryFilter;
