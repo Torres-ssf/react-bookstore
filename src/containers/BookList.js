@@ -34,7 +34,7 @@ class BookList extends React.Component { // eslint-disable-line
           onClick={() => this.handleRemoveBook(e.id)}
         >
           delete
-        </button>
+        </button>,
       ]
     ));
 
@@ -66,12 +66,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeBookMsg: (id) => {
-      dispatch(removeBookMsg(id));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  removeBookMsg: (id) => {
+    dispatch(removeBookMsg(id));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
