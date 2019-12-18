@@ -92,7 +92,7 @@ class BookForm extends React.Component { // eslint-disable-line
               {options}
             </select>
           </label>
-          <button type="submit">Add New Book</button>
+          <button className="submit-button" type="submit">Add New Book</button>
         </form>
       </div>
     );

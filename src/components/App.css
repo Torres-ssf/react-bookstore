@@ -6,7 +6,7 @@
   border: 1px solid black;
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 1fr 3fr 2fr 2fr;
+  grid-template-columns: 1fr 3fr 2fr 2fr 1fr;
   grid-auto-rows: 60px;
   width: 70%;
 }
@@ -57,7 +57,7 @@ select {
   width: 100px;
 }
 
-button {
+.submit-button {
   background-color: white;
   border: 1px solid black;
   font-size: 1rem;
@@ -67,10 +67,24 @@ button {
   transition: 400ms;
 }
 
-button:hover {
+.submit-button:hover {
   background-color: rgb(129, 148, 236);
   border-color: #E1F2FE;
   color: white;
   transition: 400ms;
 }
 
+.delete-button {
+  background-color: white;
+  border: 1px solid black;
+  color: #CA2535;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 400ms;
+}
+
+.delete-button:hover {
+  background-color: #CA2535;
+  color: white;
+  transition: 400ms;
+}
