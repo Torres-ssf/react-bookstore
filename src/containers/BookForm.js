@@ -106,7 +106,7 @@ class BookForm extends React.Component { // eslint-disable-line
 
 BookForm.propTypes = {
   createNewBook: PropTypes.func.isRequired,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   createNewBook: (book) => {
