@@ -27,7 +27,7 @@ class BookList extends React.Component {
     const book = filter
       ? this.props.book.filter(e => e.category === filter)
       : this.props.book;
-      
+
     const books = book.map(e => (
       [
         <Book
@@ -68,7 +68,9 @@ class BookList extends React.Component {
 
 BookList.propTypes = {
   book: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filter: PropTypes.string.isRequired,
   removeBookMsg: PropTypes.func.isRequired,
+  changeBookFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
