@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createBookMsg } from '../actions/index'
+import { createBookMsg } from '../actions/index';
 
 class BookForm extends React.Component { // eslint-disable-line
   constructor(props) { // eslint-disable-line
@@ -9,7 +9,7 @@ class BookForm extends React.Component { // eslint-disable-line
       title: '',
       author: '',
       category: 'Action',
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,37 +20,40 @@ class BookForm extends React.Component { // eslint-disable-line
       case 'title':
         this.setState({
           title: e.target.value,
-        })
+        });
         break;
 
       case 'author':
         this.setState({
           author: e.target.value,
-        })
+        });
         break;
 
       default:
         this.setState({
-          category: e.target.value
+          category: e.target.value,
         });
     }
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-    const id = Math.random().toString(36).substr(2,7);
-    this.props.createNewBook({
+    e.preventDefault();
+    const id = Math.random().toString(36).substr(2, 7);
+    const { createNewBook } = this.props;
+
+    createNewBook({
       id, 
-      ...this.state ,
+      ...this.state,
     });
     this.setState({
       title: '',
       author: '',
       category: 'Action',
-    })
+    });
   }
 
   render() {
+    const { title, author, category } = this.state;
     const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi', 'Drama'];
     const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
 
@@ -66,7 +69,7 @@ class BookForm extends React.Component { // eslint-disable-line
               type="text"
               placeholder="book name"
               onChange={this.handleChange}
-              value={this.state.title}
+              value={title}
               required
             />
           </label>
@@ -78,7 +81,7 @@ class BookForm extends React.Component { // eslint-disable-line
               type="text"
               placeholder="book author"
               onChange={this.handleChange}
-              value={this.state.author}
+              value={author}
               required
             />
           </label>
@@ -88,7 +91,7 @@ class BookForm extends React.Component { // eslint-disable-line
               id="category"
               name="dropdown"
               onChange={this.handleChange}
-              value={this.state.category}>
+              value={category}>
               {options}
             </select>
           </label>
@@ -104,7 +107,7 @@ const mapDispatchToProps = (dispatch) => {
     createNewBook: (book) => {
       dispatch(createBookMsg(book));
     }
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(BookForm);
