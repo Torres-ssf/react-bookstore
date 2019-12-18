@@ -42,7 +42,7 @@ class BookForm extends React.Component { // eslint-disable-line
     const { createNewBook } = this.props;
 
     createNewBook({
-      id, 
+      id,
       ...this.state,
     });
     this.setState({
@@ -91,7 +91,8 @@ class BookForm extends React.Component { // eslint-disable-line
               id="category"
               name="dropdown"
               onChange={this.handleChange}
-              value={category}>
+              value={category}
+            >
               {options}
             </select>
           </label>
@@ -106,8 +107,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createNewBook: (book) => {
       dispatch(createBookMsg(book));
-    }
+    },
   };
-}
+};
 
 export default connect(null, mapDispatchToProps)(BookForm);
