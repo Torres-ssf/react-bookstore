@@ -24,7 +24,7 @@ class BookList extends React.Component {
 
   render() {
     const { filter } = this.props;
-    const book = filter
+    const book = filter !== 'All'
       ? this.props.book.filter(e => e.category === filter)
       : this.props.book;
 

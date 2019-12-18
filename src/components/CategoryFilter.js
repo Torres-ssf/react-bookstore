@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bookCategories } from '../utility/bookCategories';
+import bookCategories from '../utility/bookCategories';
 
 const CategoryFilter = (props) => {
   const { handleFilter } = props;
