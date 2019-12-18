@@ -66,7 +66,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   removeBookMsg: (id) => {
     dispatch(removeBookMsg(id));
   },

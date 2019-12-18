@@ -103,7 +103,7 @@ class BookForm extends React.Component { // eslint-disable-line
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   createNewBook: (book) => {
     dispatch(createBookMsg(book));
   },
