@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
-import { removeBookMsg } from '../actions/index';
+import { removeBookMsg, changeBookFilter } from '../actions/index';
 
-class BookList extends React.Component { // eslint-disable-line
-  constructor(props) { // eslint-disable-line
+class BookList extends React.Component {
+  constructor(props) {
     super(props);
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
   handleRemoveBook(id) {
@@ -15,9 +17,17 @@ class BookList extends React.Component { // eslint-disable-line
     removeBookMsg(id);
   }
 
-  render() {
-    const { book } = this.props;
+  handleFilterChange(e) {
+    const { changeBookFilter } = this.props;
+    changeBookFilter(e.target.value);
+  }
 
+  render() {
+    const { filter } = this.props;
+    const book = filter
+      ? this.props.book.filter(e => e.category === filter)
+      : this.props.book;
+      
     const books = book.map(e => (
       [
         <Book
@@ -39,13 +49,18 @@ class BookList extends React.Component { // eslint-disable-line
     ));
 
     return (
-      <div className="table">
-        <span>ID</span>
-        <span>Title</span>
-        <span>Author</span>
-        <span>Category</span>
-        <span />
-        {books}
+      <div>
+        <CategoryFilter
+          handleFilter={this.handleFilterChange}
+        />
+        <div className="table">
+          <span>ID</span>
+          <span>Title</span>
+          <span>Author</span>
+          <span>Category</span>
+          <span />
+          {books}
+        </div>
       </div>
     );
   }
@@ -57,15 +72,19 @@ BookList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { book } = state;
+  const { book, filter } = state;
   return {
     book,
+    filter,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   removeBookMsg: (id) => {
     dispatch(removeBookMsg(id));
+  },
+  changeBookFilter: (category) => {
+    dispatch(changeBookFilter(category));
   },
 });
 

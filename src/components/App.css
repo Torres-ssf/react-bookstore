@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.filter {
+  display: block;
+  margin: 20px 0;
+}
+
 .table {
   border: 1px solid black;
   display: grid;
@@ -45,12 +50,12 @@
   width: 280px;
 }
 
-label {
+.form-label {
   font-size: 1.1rem;
   margin: 16px 0 10px;
 }
 
-select {
+.category-select {
   margin: 0 auto 0 20px;
   height: 30px;
   font-size: .9rem;

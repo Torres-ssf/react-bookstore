@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createBookMsg } from '../actions/index';
+import { bookCategories } from '../utility/bookCategories';
 
-class BookForm extends React.Component { // eslint-disable-line
-  constructor(props) { // eslint-disable-line
+class BookForm extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -55,14 +56,16 @@ class BookForm extends React.Component { // eslint-disable-line
 
   render() {
     const { title, author, category } = this.state;
-    const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi', 'Drama'];
-    const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
+    const options = bookCategories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
 
     return (
       <div>
         <h2>Add New Book</h2>
         <form className="form" onSubmit={this.handleSubmit}>
-          <label htmlFor="title">
+          <label
+            className="form-label"
+            htmlFor="title"
+          >
             Name:
             <input
               id="title"
@@ -74,7 +77,10 @@ class BookForm extends React.Component { // eslint-disable-line
               required
             />
           </label>
-          <label htmlFor="author">
+          <label
+            className="form-label"
+            htmlFor="author"
+          >
             Author:
             <input
               id="author"
@@ -89,8 +95,8 @@ class BookForm extends React.Component { // eslint-disable-line
           <label htmlFor="category">
             Category:
             <select
+              className="category-select"
               id="category"
-              name="dropdown"
               onChange={this.handleChange}
               value={category}
             >
