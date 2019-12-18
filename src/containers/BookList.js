@@ -28,7 +28,7 @@ class BookList extends React.Component {
     if (filter !== 'All') {
       book = [...book].filter(e => e.category === filter);
     }
-    
+
     const books = book.map(e => (
       [
         <Book
