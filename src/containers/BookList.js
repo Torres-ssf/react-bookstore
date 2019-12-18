@@ -24,10 +24,11 @@ class BookList extends React.Component {
 
   render() {
     const { filter } = this.props;
-    const book = filter !== 'All'
-      ? this.props.book.filter(e => e.category === filter)
-      : this.props.book;
-
+    let { book } = this.props;
+    if (filter !== 'All') {
+      book = [...book].filter(e => e.category === filter);
+    }
+    
     const books = book.map(e => (
       [
         <Book
