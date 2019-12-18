@@ -56,7 +56,8 @@ BookList.defaultProps = {
 };
 
 BookList.propTypes = {
-  book: PropTypes.arrayOf(PropTypes.object),
+  book: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeBookMsg: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

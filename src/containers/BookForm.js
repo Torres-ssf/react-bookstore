@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createBookMsg } from '../actions/index';
 
@@ -101,6 +102,10 @@ class BookForm extends React.Component { // eslint-disable-line
       </div>
     );
   }
+}
+
+BookForm.propTypes = {
+  createNewBook: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = dispatch => ({
