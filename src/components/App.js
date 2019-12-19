@@ -1,12 +1,13 @@
 import React from 'react';
+import Header from './Header';
 import BookList from '../containers/BookList';
 import BookForm from '../containers/BookForm';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <main className="App">
-      <h1>Bookstore</h1>
+      <Header />
       <BookList />
       <BookForm />
     </main>
