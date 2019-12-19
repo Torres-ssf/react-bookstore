@@ -30,38 +30,18 @@ class BookList extends React.Component {
     }
 
     const books = book.map(e => (
-      [
-        <Book
-          id={e.id}
-          title={e.title}
-          author={e.author}
-          category={e.category}
-          key={e.id}
-        />,
-        <button
-          className="delete-button"
-          type="button"
-          key={`${e.id}-btn`}
-          onClick={() => this.handleRemoveBook(e.id)}
-        >
-          delete
-        </button>,
-      ]
+      <Book
+        id={e.id}
+        title={e.title}
+        author={e.author}
+        category={e.category}
+        key={e.id}
+      />
     ));
 
     return (
-      <div>
-        <CategoryFilter
-          handleFilter={this.handleFilterChange}
-        />
-        <div className="table">
-          <span>ID</span>
-          <span>Title</span>
-          <span>Author</span>
-          <span>Category</span>
-          <span />
-          {books}
-        </div>
+      <div className="book-list">
+        {books}
       </div>
     );
   }
