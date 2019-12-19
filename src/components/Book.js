@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
+
+  const {title, author, category, id, deleteHandler} = props;
+
   return (
     <div className="book-container">
       <div className="book-info">
         <header>
-          <span className="category">{props.category}</span>
-          <h3>{props.title}</h3>
-          <span className="author">{props.author}</span>
+          <span className="category">{category}</span>
+          <h3>{title}</h3>
+          <span className="author">{author}</span>
         </header>
         <footer className="bottom-container">
           <button className="book-button" type="button">Comments</button>
           <span className="divider" />
-          <button className="book-button" type="button">Remove</button>
+          <button className="book-button" onClick={() => deleteHandler(id)} type="button">Remove</button>
           <span className="divider" />
           <button className="book-button" type="button">Edit</button>
         </footer>
@@ -43,6 +46,7 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+  deleteHandler: PropTypes.func.isRequired,
 };
 
 export default Book;

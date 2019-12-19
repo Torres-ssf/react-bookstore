@@ -36,6 +36,7 @@ class BookList extends React.Component {
         author={e.author}
         category={e.category}
         key={e.id}
+        deleteHandler={this.handleRemoveBook}
       />
     ));
 
