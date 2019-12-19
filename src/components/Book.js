@@ -2,14 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
-  const arr = [
-    <span key={`${props.id}-id`}>{props.id}</span>,
-    <span key={`${props.id}-title`}>{props.title}</span>,
-    <span key={`${props.id}-author`}>{props.author}</span>,
-    <span key={`${props.id}-category`}>{props.category}</span>,
-  ];
-
-  return arr;
+  return (
+    <div className="book-container">
+      <div className="book-info">
+        <header>
+          <span className="category">{props.category}</span>
+          <h3>{props.title}</h3>
+          <span className="author">{props.author}</span>
+        </header>
+        <footer className="bottom-container">
+          <button className="book-button" type="button">Comments</button>
+          <span className="divider" />
+          <button className="book-button" type="button">Remove</button>
+          <span className="divider" />
+          <button className="book-button" type="button">Edit</button>
+        </footer>
+      </div>
+      <div className="display-progress">
+        <svg>
+          <circle className="progress-circle" cx="30" cy="30" r="30" />
+          <circle className="progress-circle" cx="30" cy="30" r="30" />
+        </svg>
+        <div className="percent-container">
+          <span className="number">50&#37;</span>
+          <span className="completed">Completed</span>
+        </div>
+      </div>
+      <span className="divider" />
+      <div className="update-progress">
+        <span className="page-label">Current page</span>
+        <span className="page">Page 200 of 410</span>
+        <button className="update-btn">Update progress</button>
+      </div>
+    </div>
+  );
 };
 
 Book.propTypes = {
