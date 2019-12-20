@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
-  const {title, author, category, id, deleteHandler} = props;
+  const { title, author, category, id, deleteHandler } = props;
 
   return (
     <div className="book-container">
@@ -21,6 +21,7 @@ const Book = (props) => {
           <button className="book-button" type="button">Edit</button>
         </footer>
       </div>
+      <span className="divider" />
       <div className="display-progress">
         <svg>
           <circle className="progress-circle" cx="30" cy="30" r="30" />
