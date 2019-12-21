@@ -23,7 +23,7 @@ class BookList extends React.Component {
   }
 
   render() {
-    const { filter } = this.props;
+    const { filter, progress } = this.props;
     let { book } = this.props;
     if (filter !== 'All') {
       book = [...book].filter(e => e.category === filter);
@@ -35,6 +35,8 @@ class BookList extends React.Component {
         title={e.title}
         author={e.author}
         category={e.category}
+        pages={e.pages}
+        progress={progress}
         key={e.id}
         deleteHandler={this.handleRemoveBook}
       />
@@ -56,10 +58,11 @@ BookList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { book, filter } = state;
+  const { book, filter, progress } = state;
   return {
     book,
     filter,
+    progress,
   };
 };
 

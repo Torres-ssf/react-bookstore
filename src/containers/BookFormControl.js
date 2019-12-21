@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BookForm from '../components/BookForm';
 import { connect } from 'react-redux';
 import { createBookMsg } from '../actions/index';
-import bookCategories from '../utility/bookCategories';
 
 class BookFormControl extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class BookFormControl extends React.Component {
     this.state = {
       title: '',
       author: '',
-      category: 'Action',
+      category: '',
       pages: '',
     };
 
@@ -38,7 +37,7 @@ class BookFormControl extends React.Component {
     this.setState({
       title: '',
       author: '',
-      category: 'Action',
+      category: '',
       pages: '',
     });
   }
