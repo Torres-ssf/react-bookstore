@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
-  const { title, author, category, id, deleteHandler } = props;
+  const { title, author, pages, category, id, progress, deleteHandler } = props;
 
   return (
     <div className="book-container">
@@ -35,7 +35,7 @@ const Book = (props) => {
       <span className="divider" />
       <div className="update-progress">
         <span className="page-label">Current page</span>
-        <span className="page">Page 200 of 410</span>
+        <span className="page">Page {progress} of {pages}</span>
         <button className="update-btn">Update progress</button>
       </div>
     </div>
