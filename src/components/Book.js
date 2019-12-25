@@ -61,11 +61,7 @@ const Book = (props) => {
       <div className="update-progress">
         <span className="page-label">Current page</span>
         <span className="page">
-          {'Page '}
-          {progress}
-          {' of '}
-          {pages}
-          {'.'}
+          Page {progress} of {pages}.
         </span>
         <form
           className="update-page"
