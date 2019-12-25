@@ -11,15 +11,17 @@ const Header = (props) => {
         className="header-button"
         type="button"
         onClick={() => setFilterDisplay(false)}
-      >Books</button>
+      >
+        Books
+      </button>
       <button
         className="header-button"
         type="button"
         onClick={() => setFilterDisplay(true)}
       >Categories</button>
     </header>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   setFilterDisplay: PropTypes.func.isRequired,

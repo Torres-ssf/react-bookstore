@@ -18,14 +18,14 @@ class App extends React.Component {
     this.setState({
       showFilter: bool,
     });
-  };
+  }
 
   render() {
     const { showFilter } = this.state;
     return (
       <main className="App">
         <Header setFilterDisplay={this.setShowFilterValue} />
-        <BookList showFilter ={showFilter}/>
+        <BookList showFilter={showFilter}/>
         <BookFormControl />
       </main>
     );

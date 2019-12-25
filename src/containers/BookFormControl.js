@@ -1,7 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BookForm from '../components/BookForm';
-import { connect } from 'react-redux';
 import { createBookMsg } from '../actions/index';
 
 class BookFormControl extends React.Component {
@@ -19,7 +19,7 @@ class BookFormControl extends React.Component {
   }
 
   handleChange(e) {
-    const { id, value } = e.target
+    const { id, value } = e.target;
     this.setState({
       [id]: value,
     });
@@ -44,7 +44,12 @@ class BookFormControl extends React.Component {
   }
 
   render() {
-    const { title, author, category, pages } = this.state;
+    const {
+      title,
+      author,
+      category,
+      pages,
+    } = this.state;
 
     return (
       <BookForm
@@ -56,7 +61,7 @@ class BookFormControl extends React.Component {
         submitHandler={this.handleSubmit}
       />
     );
-  };
+  }
 }
 
 BookFormControl.propTypes = {

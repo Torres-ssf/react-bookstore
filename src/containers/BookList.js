@@ -36,7 +36,7 @@ class BookList extends React.Component {
       book = [...book].filter(e => e.category === filter);
     }
 
-    const books = book.map((e,i) => (
+    const books = book.map((e, i) => (
       <Book
         id={e.id}
         index={i}
@@ -53,7 +53,7 @@ class BookList extends React.Component {
 
     return (
       <div className="book-list">
-        { showFilter && <CategoryFilter handleFilter={this.handleFilterChange} />}
+        {showFilter && <CategoryFilter handleFilter={this.handleFilterChange} />}
         {books}
       </div>
     );

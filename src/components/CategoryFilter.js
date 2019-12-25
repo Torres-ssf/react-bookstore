@@ -13,8 +13,8 @@ const CategoryFilter = (props) => {
         className="filter"
         htmlFor="category-filter"
       >
-        Filter books by category:<br/>
-      <select
+        Filter books by category:<br />
+        <select
           className="category-select"
           id="category-filter"
           onChange={handleFilter}

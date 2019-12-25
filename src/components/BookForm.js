@@ -3,20 +3,23 @@ import PropTypes from 'prop-types';
 import bookCategories from '../utility/bookCategories';
 
 const BookForm = (props) => {
-  const { title, author, category, pages, changeHandler, submitHandler } = props;
+  const { 
+    title, author, category, pages, 
+    changeHandler, submitHandler, 
+  } = props;
   const options = bookCategories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
 
   return (
     <div className="form-container">
       <div className="line" />
       <h2>Add New Book</h2>
-      <form className="form" onSubmit={(e) => submitHandler(e)}>
+      <form className="form" onSubmit={e => submitHandler(e)}>
         <input
           id="title"
           className="book-input"
           type="text"
           placeholder="Book name"
-          onChange={(e) => changeHandler(e)}
+          onChange={e => changeHandler(e)}
           value={title}
           required
         />
@@ -25,7 +28,7 @@ const BookForm = (props) => {
           className="book-input"
           type="text"
           placeholder="Book author"
-          onChange={(e) => changeHandler(e)}
+          onChange={e => changeHandler(e)}
           value={author}
           required
         />
@@ -34,14 +37,14 @@ const BookForm = (props) => {
           className="book-input"
           type="number"
           placeholder="Number of pages"
-          onChange={(e) => changeHandler(e)}
+          onChange={e => changeHandler(e)}
           value={pages}
           required
         />
         <select
           className="category-select"
           id="category"
-          onChange={(e) => changeHandler(e)}
+          onChange={e => changeHandler(e)}
           value={category}
           required
         >
@@ -52,7 +55,7 @@ const BookForm = (props) => {
       </form>
     </div>
   );
-}
+};
 
 BookForm.propTypes = {
   title: PropTypes.string.isRequired,
@@ -61,6 +64,6 @@ BookForm.propTypes = {
   pages: PropTypes.string.isRequired,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
-}
+};
 
 export default BookForm;
