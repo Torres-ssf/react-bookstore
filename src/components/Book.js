@@ -1,34 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
+  const { index, title, author, pages, category, id, progress, updateProgress, deleteHandler } = props;
 
-  const { title, author, pages, category, id, progress, deleteHandler } = props;
+  const [updateForm, toggleForm] = useState(false);
+
+  const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
+
+  const percentCompleted = Math.floor(progress/pages * 100);
+  const progressPercent = Math.round((1 - (progress / pages)) * 189);
+  const progressStyle = { 
+    stroke: percentCompleted === 100 ? '#32A745' : '#3481c9',
+    strokeDashoffset: `${progressPercent}` 
+  };
+
+  const [inputProgress, inputProgressUpdate] = useState(progress);
+
+  const inputProgressHandler = (e) => {
+    inputProgressUpdate(e.target.value);
+  }
+
+  const updateProgressHandler = (e) => {
+    toggleForm(!updateForm);
+    updateProgress(e, index, inputProgress);
+  }
 
   return (
     <div className="book-container">
       <div className="book-info">
         <header>
           <span className="category">{category}</span>
-          <h3>{title}</h3>
+          <h3 className="title" title={title}>{title}</h3>
           <span className="author">{author}</span>
         </header>
         <footer className="bottom-container">
-          <button className="book-button" type="button">Comments</button>
+          <button className="book-button" type="button">Edit</button>
           <span className="divider" />
           <button className="book-button" onClick={() => deleteHandler(id)} type="button">Remove</button>
-          <span className="divider" />
-          <button className="book-button" type="button">Edit</button>
         </footer>
       </div>
       <span className="divider" />
       <div className="display-progress">
         <svg>
           <circle className="progress-circle" cx="30" cy="30" r="30" />
-          <circle className="progress-circle" cx="30" cy="30" r="30" />
+          <circle className="progress-circle" style={progressStyle} cx="30" cy="30" r="30" />
         </svg>
         <div className="percent-container">
-          <span className="number">50&#37;</span>
+          <span className="number">{percentCompleted}&#37;</span>
           <span className="completed">Completed</span>
         </div>
       </div>
@@ -36,7 +55,26 @@ const Book = (props) => {
       <div className="update-progress">
         <span className="page-label">Current page</span>
         <span className="page">Page {progress} of {pages}</span>
-        <button className="update-btn">Update progress</button>
+        <form
+          className="update-page"
+          style={displayNone}
+          onSubmit={updateProgressHandler}
+        >
+          <input
+            type="number"
+            placeholder="pages"
+            value={inputProgress}
+            onChange={inputProgressHandler}
+            min="1"
+            max={pages}
+          />
+          <button>Update</button>
+        </form>
+        <button
+          className="update-btn"
+          onClick={() => toggleForm(!updateForm)}
+        >Update progress
+        </button>
       </div>
     </div>
   );
