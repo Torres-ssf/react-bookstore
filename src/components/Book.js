@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Book = (props) => {
   const {
     index, title, author, pages, category, id,
-    progress, updateProgress, deleteHandler
+    progress, updateProgress, deleteHandler,
   } = props;
 
   const [updateForm, toggleForm] = useState(false);
