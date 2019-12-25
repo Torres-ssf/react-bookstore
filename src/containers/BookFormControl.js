@@ -33,6 +33,7 @@ class BookFormControl extends React.Component {
     createNewBook({
       id,
       ...this.state,
+      progress: '1',
     });
     this.setState({
       title: '',
