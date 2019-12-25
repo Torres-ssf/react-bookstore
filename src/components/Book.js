@@ -51,8 +51,9 @@ const Book = (props) => {
         </svg>
         <div className="percent-container">
           <span className="number">
-            {percentCompleted}&#37;
-            </span>
+            {percentCompleted}
+            &#37;
+          </span>
           <span className="completed">Completed</span>
         </div>
       </div>
@@ -60,7 +61,10 @@ const Book = (props) => {
       <div className="update-progress">
         <span className="page-label">Current page</span>
         <span className="page">
-          Page {progress} of {pages}
+          Page
+          {progress}
+          of
+          {pages}
         </span>
         <form
           className="update-page"
@@ -81,7 +85,8 @@ const Book = (props) => {
           className="update-btn"
           onClick={() => toggleForm(!updateForm)}
           type="button"
-        >Update progress
+        >
+          Update progress
         </button>
       </div>
     </div>
@@ -96,6 +101,7 @@ Book.propTypes = {
   category: PropTypes.string.isRequired,
   pages: PropTypes.string.isRequired,
   progress: PropTypes.string.isRequired,
+  updateProgress: PropTypes.func.isRequired,
   deleteHandler: PropTypes.func.isRequired,
 };
 

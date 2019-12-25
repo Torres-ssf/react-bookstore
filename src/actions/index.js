@@ -8,11 +8,11 @@ export const createBookMsg = book => ({ type: CREATE_BOOK, book });
 export const removeBookMsg = id => ({ type: REMOVE_BOOK, id });
 
 export const updateBookProgress = (index, progress) => {
-    return {
-        type: UPDATE_BOOK_PROGRESS,
-        index,
-        progress
-    };
-}
+  return {
+    type: UPDATE_BOOK_PROGRESS,
+    index,
+    progress
+  };
+};
 
 export const changeBookFilter = category => ({ type: CHANGE_FILTER, category });

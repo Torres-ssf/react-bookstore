@@ -18,7 +18,9 @@ const Header = (props) => {
         className="header-button"
         type="button"
         onClick={() => setFilterDisplay(true)}
-      >Categories</button>
+      >
+        Categories
+      </button>
     </header>
   );
 };

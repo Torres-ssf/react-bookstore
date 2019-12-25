@@ -11,7 +11,7 @@ const bookReducer = (state = [], action) => {
     case REMOVE_BOOK:
       return state.filter(book => book.id !== action.id);
 
-    case UPDATE_BOOK_PROGRESS:
+    case UPDATE_BOOK_PROGRESS: {
       const { index, progress } = action;
       return [
         ...state.slice(0, index),
@@ -21,6 +21,7 @@ const bookReducer = (state = [], action) => {
         },
         ...state.slice(index + 1, state.length),
       ];
+    }
 
     default:
       return state;

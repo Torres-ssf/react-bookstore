@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <main className="App">
         <Header setFilterDisplay={this.setShowFilterValue} />
-        <BookList showFilter={showFilter}/>
+        <BookList showFilter={showFilter} />
         <BookFormControl />
       </main>
     );

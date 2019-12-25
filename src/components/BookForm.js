@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import bookCategories from '../utility/bookCategories';
 
 const BookForm = (props) => {
-  const { 
-    title, author, category, pages, 
-    changeHandler, submitHandler, 
+  const {
+    title, author, category, pages,
+    changeHandler, submitHandler,
   } = props;
   const options = bookCategories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
 
