@@ -54,11 +54,13 @@ class BookList extends React.Component {
     return (
       <div className="book-list">
         {
-          showFilter &&
-          <CategoryFilter
-            filter={filter}
-            handleFilter={this.handleFilterChange}
-          />
+          showFilter
+          && (
+            <CategoryFilter
+              filter={filter}
+              handleFilter={this.handleFilterChange}
+            />
+          )
         }
         {books}
       </div>

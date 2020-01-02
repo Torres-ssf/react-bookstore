@@ -8,8 +8,9 @@ const CategoryFilter = (props) => {
   const options = categories.map(e => (
     <option
       key={`${e}-`}
-      selected={ filter === e ? true : null}
-      value={e}>{e}
+      selected={filter === e ? true : null}
+      value={e}
+    >{e}
     </option>
   ));
 
@@ -34,6 +35,7 @@ const CategoryFilter = (props) => {
 };
 
 CategoryFilter.propTypes = {
+  filter: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
 };
 
