@@ -10,7 +10,8 @@ const CategoryFilter = (props) => {
       key={`${e}-`}
       selected={filter === e ? true : null}
       value={e}
-    >{e}
+    >
+      {e}
     </option>
   ));
 
