@@ -32,7 +32,7 @@ class BookList extends React.Component {
   render() {
     const { showFilter, filter } = this.props;
     let { book } = this.props;
-    if (filter !== 'All') {
+    if (showFilter && filter !== 'All') {
       book = [...book].filter(e => e.category === filter);
     }
 
@@ -53,7 +53,13 @@ class BookList extends React.Component {
 
     return (
       <div className="book-list">
-        {showFilter && <CategoryFilter handleFilter={this.handleFilterChange} />}
+        {
+          showFilter &&
+          <CategoryFilter
+            filter={filter}
+            handleFilter={this.handleFilterChange}
+          />
+        }
         {books}
       </div>
     );

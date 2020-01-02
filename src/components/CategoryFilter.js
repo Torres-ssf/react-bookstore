@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import bookCategories from '../utility/bookCategories';
 
 const CategoryFilter = (props) => {
-  const { handleFilter } = props;
+  const { handleFilter, filter } = props;
   const categories = ['All', ...bookCategories];
-  const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
+  const options = categories.map(e => (
+    <option
+      key={`${e}-`}
+      selected={ filter === e ? true : null}
+      value={e}>{e}
+    </option>
+  ));
 
   return (
     <div className="book-categorie">
