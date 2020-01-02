@@ -3,28 +3,40 @@ import PropTypes from 'prop-types';
 import bookCategories from '../utility/bookCategories';
 
 const CategoryFilter = (props) => {
-  const { handleFilter } = props;
+  const { handleFilter, filter } = props;
   const categories = ['All', ...bookCategories];
-  const options = categories.map(e => <option key={`${e}-`} value={e}>{e}</option>);
+  const options = categories.map(e => (
+    <option
+      key={`${e}-`}
+      selected={filter === e ? true : null}
+      value={e}
+    >
+      {e}
+    </option>
+  ));
 
   return (
-    <label
-      className="filter"
-      htmlFor="category-filter"
-    >
-      Filter books by category:
-      <select
-        className="category-select"
-        id="category-filter"
-        onChange={handleFilter}
+    <div className="book-categorie">
+      <label
+        className="filter"
+        htmlFor="category-filter"
       >
-        {options}
-      </select>
-    </label>
+        Filter books by category:
+        <br />
+        <select
+          className="category-select"
+          id="category-filter"
+          onChange={handleFilter}
+        >
+          {options}
+        </select>
+      </label>
+    </div>
   );
 };
 
 CategoryFilter.propTypes = {
+  filter: PropTypes.string.isRequired,
   handleFilter: PropTypes.func.isRequired,
 };
 

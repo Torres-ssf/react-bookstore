@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
+
+@mixin button-style {
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: 1px solid #0290ff;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+@mixin button-style-hover {
+  background-color: white;
+  color: #0290ff;
+}
+
+$default-transition: 400ms;
+
+body {
+  background-color: #f5f6fa;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 95px;
+  line-height: 95px;
+  background-color: #fff;
+  margin-bottom: 30px;
+  padding: 0 100px;
+}
+
+.App {
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.3);
+  background-color: #fafafa;
+  margin: 60px 80px;
+  text-align: center;
+  min-width: 360px;
+  max-width: 1650px;
+}
+
+.logo {
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
+  color: #0290ff;
+  line-height: 95px;
+  margin: auto 0;
+  padding: 0;
+}
+
+.header-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1.9px;
+  color: #121212;
+  margin: 10px 16px;
+}
+
+.header-button:first-of-type {
+  margin-left: 40px;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+
+  .book-categorie {
+    .filter {
+      color: #888888;
+      display: block;
+      margin: 16px 0 20px;
+      font-size: 1.1rem;
+    }
+
+    select {
+      margin-top: 16px;
+      background-color: transparent;
+      border-color: rgba(128, 128, 128, 0.5);
+      border-radius: 3px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      padding: 6px 12px;
+      height: 40px;
+      width: 210px;
+    }
+  }
+}
+
+.divider {
+  background-color: #e8e8e893;
+  height: 100%;
+  margin: 0 32px;
+  width: 2px;
+}
+
+.book-container {
+  height: 170px;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 8px 100px;
+  padding: 32px;
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 0%;
+    justify-content: space-between;
+    text-align: left;
+
+    .category {
+      font-size: 0.9rem;
+      font-weight: bold;
+      opacity: 0.5;
+      color: #121212;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-family: "Roboto Slab", serif;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 4px 0 0;
+      color: #121212;
+    }
+
+    .author {
+      font-family: "Roboto Slab", serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #4386bf;
+    }
+
+    .bottom-container {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+
+      .book-button {
+        background-color: transparent;
+        border: none;
+        color: #4386bf;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-family: "Roboto Slab", serif;
+        padding: 0;
+      }
+
+      .divider {
+        margin: 0 16px;
+      }
+    }
+  }
+
+  .display-progress {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 0%;
+    justify-content: center;
+
+    svg {
+      align-self: center;
+      height: 70px;
+      width: 70px;
+    }
+
+    circle {
+      fill: transparent;
+      stroke-dasharray: 189;
+      stroke-width: 8;
+      transform: translate(5px, 5px);
+    }
+
+    circle:nth-of-type(1) {
+      stroke: #e8e8e8;
+      stroke-dashoffset: 0;
+    }
+
+    .percent-container {
+      display: flex;
+      flex-direction: column;
+      margin: auto 0;
+      text-align: left;
+      margin-left: 24px;
+
+      .number {
+        font-size: 2rem;
+      }
+
+      .completed {
+        color: #121212;
+        font-size: 0.9rem;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .update-progress {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    width: 0%;
+    text-align: left;
+
+    .page-label {
+      opacity: 0.5;
+      font-size: 0.8rem;
+      color: #121212;
+      text-transform: uppercase;
+    }
+
+    .page {
+      margin-top: 8px;
+      font-family: RobotoSlab;
+      font-size: 1rem;
+      color: #121212;
+    }
+
+    .update-page {
+      background-color: #fafafa;
+      box-sizing: border-box;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+      border-radius: 0.2em;
+      display: flex;
+      width: 100%;
+      position: absolute;
+      padding: 12px;
+      z-index: 10;
+
+      input {
+        display: block;
+        margin-right: 16px;
+        flex-basis: 100%;
+      }
+
+      button {
+        background-color: #3f90ff;
+        border: 1px solid #3f90ff;
+        box-sizing: border-box;
+        margin-top: auto;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .update-btn {
+      @include button-style;
+      margin-top: auto;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      transition: $default-transition;
+    }
+
+    .update-btn:hover {
+      @include button-style-hover;
+    }
+  }
+}
+
+.form-container {
+  padding: 0 100px;
+  padding-bottom: 40px;
+
+  .line {
+    height: 0;
+    margin: 32px 0;
+    border: solid 1px #e8e8e877;
+  }
+
+  h2 {
+    text-align: center;
+    letter-spacing: -0.18px;
+    color: #888888;
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+
+    .book-input {
+      border-radius: 0.2em;
+      border: 1px solid #d3d3d3;
+      box-sizing: border-box;
+      font-size: 1rem;
+      height: 40px;
+      margin-top: 24px;
+      padding: 6px 12px;
+      flex-basis: 45%;
+    }
+
+    .category-select {
+      background-color: transparent;
+      box-sizing: border-box;
+      border-radius: 0.2em;
+      height: 40px;
+      opacity: 0.5;
+      margin-top: 24px;
+      padding: 6px 12px;
+      font-size: 1rem;
+      flex-basis: 45%;
+    }
+
+    .submit-button {
+      @include button-style;
+      font-size: 1rem;
+      font-weight: 700;
+      align-self: center;
+      margin: 24px auto 0;
+      padding: 12px 16px;
+      transition: $default-transition;
+    }
+
+    .submit-button:hover {
+      @include button-style-hover;
+    }
+  }
+}
+
+@media (max-width: 1219px) {
+
+  .App {
+    margin: 40px;
+  }
+
+  .page-header {
+    padding: 0 50px;
+  }
+
+  .book-container {
+    margin: 8px 50px;
+  }
+
+  .form-container {
+    padding: 0 50px 40px;
+  }
+}
+
+@media (max-width: 960px) {
+  .divider {
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 880px) {
+  .book-container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 16px;
+    height: inherit;
+
+    .book-info,
+    .display-progress,
+    .update-progress {
+      width: inherit;
+      flex-grow: 0;
+      padding: 16px;
+    }
+
+    .update-btn {
+      margin-top: 20px !important;
+    }
+
+    .book-info {
+      .title {
+        margin: 4px 0;
+      }
+
+      .bottom-container {
+        margin: 4px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 710px) {
+  .App {
+    margin: 10px 10px;
+  }
+
+  .page-header {
+    padding: 0 20px;
+    margin-bottom: 16px;
+  }
+
+  .book-container {
+    margin: 8px 20px;
+  }
+
+  .form-container {
+    padding: 0 20px 20px;
+    flex-wrap: nowrap;
+    .form {
+      flex-direction: column;
+    }
+  }
+
+  .book-container {
+    // flex-direction: column;
+    align-content: center;
+  }
+}
+
+@media (max-width: 590px) {
+  .App {
+    margin: 10px auto;
+  }
+  .page-header {
+    align-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: inherit;
+  }
+  .logo {
+    height: 60px;
+    line-height: 60px;
+  }
+  .header-button:nth-of-type(1) {
+    margin: 10px 16px;
+  }
+  .book-container {
+    flex-direction: column;
+  }
+}
