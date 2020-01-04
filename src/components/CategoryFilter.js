@@ -8,7 +8,6 @@ const CategoryFilter = (props) => {
   const options = categories.map(e => (
     <option
       key={`${e}-`}
-      selected={filter === e ? true : null}
       value={e}
     >
       {e}
@@ -27,6 +26,7 @@ const CategoryFilter = (props) => {
           className="category-select"
           id="category-filter"
           onChange={handleFilter}
+          defaultValue={filter}
         >
           {options}
         </select>
