@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
-import { removeBookMsg, changeBookFilter, updateBookProgress } from '../actions/index';
+import Loader from '../components/Loader';
+import { fetchBookData, deleteBook, changeBookFilter, updateBookProgress } from '../actions/index';
 
 class BookList extends React.Component {
   constructor(props) {
@@ -14,14 +15,14 @@ class BookList extends React.Component {
   }
 
   handleRemoveBook(id) {
-    const { removeBookMsg } = this.props;
-    removeBookMsg(id);
+    const { deleteBook } = this.props;
+    deleteBook(id);
   }
 
-  handleUpdateProgress(e, index, progress) {
+  handleUpdateProgress(e, id, index, progress) {
     e.preventDefault();
     const { updateBookProgress } = this.props;
-    updateBookProgress(index, progress);
+    updateBookProgress(id, index, progress);
   }
 
   handleFilterChange(e) {
@@ -29,14 +30,20 @@ class BookList extends React.Component {
     changeBookFilter(e.target.value);
   }
 
+  componentDidMount() {
+    const { fetchBookData } = this.props;
+    fetchBookData();
+  }
+
   render() {
     const { showFilter, filter } = this.props;
-    let { book } = this.props;
+    const { book } = this.props;
+    let { bookList, loading } = book;
     if (showFilter && filter !== 'All') {
-      book = [...book].filter(e => e.category === filter);
+      bookList = [...bookList].filter(e => e.category === filter);
     }
 
-    const books = book.map((e, i) => (
+    const books = bookList.map((e, i) => (
       <Book
         id={e.id}
         index={i}
@@ -62,6 +69,7 @@ class BookList extends React.Component {
             />
           )
         }
+        {loading && <Loader />}
         {books}
       </div>
     );
@@ -69,9 +77,13 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  book: PropTypes.arrayOf(PropTypes.object).isRequired,
+  book: PropTypes.exact({
+    loading: PropTypes.bool,
+    bookList: PropTypes.array,
+  }).isRequired,
   filter: PropTypes.string.isRequired,
-  removeBookMsg: PropTypes.func.isRequired,
+  fetchBookData: PropTypes.func.isRequired,
+  deleteBook: PropTypes.func.isRequired,
   updateBookProgress: PropTypes.func.isRequired,
   changeBookFilter: PropTypes.func.isRequired,
   showFilter: PropTypes.bool.isRequired,
@@ -86,11 +98,14 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeBookMsg: (id) => {
-    dispatch(removeBookMsg(id));
+  fetchBookData: () => {
+    dispatch(fetchBookData());
   },
-  updateBookProgress: (index, progress) => {
-    dispatch(updateBookProgress(index, progress));
+  deleteBook: (id) => {
+    dispatch(deleteBook(id));
+  },
+  updateBookProgress: (id, index, progress) => {
+    dispatch(updateBookProgress(id, index, progress));
   },
   changeBookFilter: (category) => {
     dispatch(changeBookFilter(category));

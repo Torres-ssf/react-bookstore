@@ -8,17 +8,14 @@ const Book = (props) => {
   } = props;
 
   const [updateForm, toggleForm] = useState(false);
+  const [inputProgress, inputProgressUpdate] = useState(progress);
+  const [strokeClass, changeStrokeClass] = useState('progress-meter');
 
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
 
   const percentCompleted = Math.floor(progress / pages * 100);
   const progressPercent = Math.round((1 - (progress / pages)) * 189);
-  const progressStyle = {
-    stroke: percentCompleted === 100 ? '#32A745' : '#3481c9',
-    strokeDashoffset: `${progressPercent}`,
-  };
-
-  const [inputProgress, inputProgressUpdate] = useState(progress);
+  const strokeColor = percentCompleted === 100 ? '#32A745' : '#3481c9';
 
   const inputProgressHandler = (e) => {
     inputProgressUpdate(e.target.value);
@@ -26,7 +23,8 @@ const Book = (props) => {
 
   const updateProgressHandler = (e) => {
     toggleForm(!updateForm);
-    updateProgress(e, index, inputProgress);
+    changeStrokeClass('progress-meter')
+    updateProgress(e, id, index, parseInt(inputProgress, 10));
   };
 
   return (
@@ -46,8 +44,14 @@ const Book = (props) => {
       <span className="divider" />
       <div className="display-progress">
         <svg>
-          <circle className="progress-circle" cx="30" cy="30" r="30" />
-          <circle className="progress-circle" style={progressStyle} cx="30" cy="30" r="30" />
+          <circle cx="30" cy="30" r="30" />
+          <circle
+            className={strokeClass}
+            stroke={strokeColor}
+            strokeDashoffset={progressPercent}
+            cx="30" cy="30" r="30"
+            onAnimationEnd={() => changeStrokeClass('')}
+          />
         </svg>
         <div className="percent-container">
           <span className="number">
@@ -92,12 +96,12 @@ const Book = (props) => {
 
 Book.propTypes = {
   index: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
-  pages: PropTypes.string.isRequired,
-  progress: PropTypes.string.isRequired,
+  pages: PropTypes.number.isRequired,
+  progress: PropTypes.number.isRequired,
   updateProgress: PropTypes.func.isRequired,
   deleteHandler: PropTypes.func.isRequired,
 };

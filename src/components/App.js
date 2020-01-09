@@ -10,7 +10,6 @@ class App extends React.Component {
     this.state = {
       showFilter: false,
     };
-
     this.setShowFilterValue = this.setShowFilterValue.bind(this);
   }
 
