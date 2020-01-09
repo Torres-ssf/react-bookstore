@@ -41,6 +41,17 @@ body {
   max-width: 1650px;
 }
 
+.loader {
+  animation: spin 800ms linear infinite;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 60px;
+  text-align: center;
+  margin: 100px auto;
+  height: 60px;
+}
+
 .logo {
   display: block;
   font-size: 30px;
@@ -98,6 +109,7 @@ body {
 }
 
 .book-container {
+  animation: appear 500ms forwards linear;
   height: 170px;
   border-radius: 4px;
   border: solid 1px #e8e8e8;
@@ -185,6 +197,10 @@ body {
     circle:nth-of-type(1) {
       stroke: #e8e8e8;
       stroke-dashoffset: 0;
+    }
+
+    .progress-meter {
+      animation: fill-progress 500ms forwards linear;
     }
 
     .percent-container {
@@ -333,6 +349,45 @@ body {
     .submit-button:hover {
       @include button-style-hover;
     }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+
+  }
+  60% {
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1.035);
+  }
+  100% {
+    // opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fill-progress {
+  from {
+    stroke-dashoffset: 189;
+  }
+}
+
+@keyframes fill-progress-update {
+  from {
+    stroke-dashoffset: initial;
   }
 }
 
