@@ -1,26 +1,58 @@
-import { CREATE_BOOK, REMOVE_BOOK, UPDATE_BOOK_PROGRESS } from '../actions/index';
+import { FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS } from '../actions/index';
 
-const bookReducer = (state = [], action) => {
+const defaultState = () => ({
+  loading: false,
+  bookList: [],
+});
+
+const bookReducer = (state = defaultState(), action) => {
   switch (action.type) {
-    case CREATE_BOOK:
-      return [
+    case FETCH_BOOK_DATA:
+      return {
         ...state,
-        action.book,
-      ];
+        loading: true,
+      };
 
-    case REMOVE_BOOK:
-      return state.filter(book => book.id !== action.id);
+    case ADD_BOOK_DATA:
+      return {
+        loading: false,
+        bookList: [...action.data],
+      };
+
+    case ADD_NEW_BOOK:
+      const { book } = action;
+      console.log(book);
+      return {
+        ...state,
+        bookList: [
+          ...state.bookList,
+          {
+            ...book,
+            progress: 1
+          },
+        ],
+      }
+
+    case DELETE_BOOK:
+      return {
+        ...state,
+        bookList: state.bookList.filter(book => book.id !== action.id),
+      }
+
 
     case UPDATE_BOOK_PROGRESS: {
       const { index, progress } = action;
-      return [
-        ...state.slice(0, index),
-        {
-          ...state[index],
-          progress,
-        },
-        ...state.slice(index + 1, state.length),
-      ];
+      return {
+        ...state,
+        bookList: [
+          ...state.bookList.slice(0, index),
+          {
+            ...state.bookList[index],
+            progress,
+          },
+          ...state.bookList.slice(index + 1, state.bookList.length),
+        ],
+      }
     }
 
     default:
