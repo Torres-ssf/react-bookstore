@@ -21,7 +21,6 @@ const bookReducer = (state = defaultState(), action) => {
 
     case ADD_NEW_BOOK:
       const { book } = action;
-      console.log(book);
       return {
         ...state,
         bookList: [
