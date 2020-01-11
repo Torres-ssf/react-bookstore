@@ -9,26 +9,36 @@ const Book = (props) => {
 
   const [updateForm, toggleForm] = useState(false);
   const [inputProgress, inputProgressUpdate] = useState(progress);
-  const [strokeClass, changeStrokeClass] = useState('progress-meter');
+  const [deleteAnimClass, toggleDeleteAnim] = useState('');
 
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
 
   const percentCompleted = Math.floor(progress / pages * 100);
   const progressPercent = Math.round((1 - (progress / pages)) * 189);
   const strokeColor = percentCompleted === 100 ? '#32A745' : '#3481c9';
-
-  const inputProgressHandler = (e) => {
-    inputProgressUpdate(e.target.value);
-  };
+  const progressStyles = { transition: 'stroke-dashoffset 500ms linear' }
 
   const updateProgressHandler = (e) => {
     toggleForm(!updateForm);
-    changeStrokeClass('progress-meter')
     updateProgress(e, id, index, parseInt(inputProgress, 10));
   };
 
+  const animationEnded = (e) => {
+    const { animationName } = e;
+
+    switch (animationName) {
+      case 'disappear':
+        deleteHandler(id);
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
-    <div className="book-container">
+    <div
+      className={`book-container ${deleteAnimClass}`}
+      onAnimationEnd={(e) => animationEnded(e)}>
       <div className="book-info">
         <header>
           <span className="category">{category}</span>
@@ -38,7 +48,10 @@ const Book = (props) => {
         <footer className="bottom-container">
           <button className="book-button" type="button">Edit</button>
           <span className="divider" />
-          <button className="book-button" onClick={() => deleteHandler(id)} type="button">Remove</button>
+          <button
+            className="book-button"
+            onClick={() => toggleDeleteAnim('book-disappear')}
+            type="button">Remove</button>
         </footer>
       </div>
       <span className="divider" />
@@ -46,11 +59,11 @@ const Book = (props) => {
         <svg>
           <circle cx="30" cy="30" r="30" />
           <circle
-            className={strokeClass}
             stroke={strokeColor}
             strokeDashoffset={progressPercent}
             cx="30" cy="30" r="30"
-            onAnimationEnd={() => changeStrokeClass('')}
+            style={progressStyles}
+            onAnimationEnd={(e) => animationEnded(e)}
           />
         </svg>
         <div className="percent-container">
@@ -76,7 +89,7 @@ const Book = (props) => {
             type="number"
             placeholder="pages"
             value={inputProgress}
-            onChange={inputProgressHandler}
+            onChange={(e) => inputProgressUpdate(e.target.value)}
             min="1"
             max={pages}
           />
