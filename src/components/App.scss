@@ -21,11 +21,14 @@ body {
   background-color: #f5f6fa;
 }
 
+a {
+  text-decoration: none;
+}
+
 .page-header {
   display: flex;
   flex-wrap: nowrap;
   height: 95px;
-  line-height: 95px;
   background-color: #fff;
   margin-bottom: 30px;
   padding: 0 100px;
@@ -62,10 +65,15 @@ body {
   padding: 0;
 }
 
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: auto 0;
+  list-style-type: none;
+}
+
 .header-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
   letter-spacing: 1.9px;
   color: #121212;
   margin: 10px 16px;
@@ -433,6 +441,7 @@ body {
     .book-info {
       .title {
         margin: 4px 0;
+        white-space: normal;
       }
 
       .bottom-container {
@@ -478,6 +487,10 @@ body {
     justify-content: space-around;
     flex-direction: column;
     height: inherit;
+  }
+  .nav-list {
+    flex-direction: column;
+    margin: 0 auto;
   }
   .logo {
     height: 60px;
