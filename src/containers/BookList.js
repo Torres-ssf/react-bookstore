@@ -5,6 +5,7 @@ import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
 import { fetchBookData, deleteBook, changeBookFilter, updateBookProgress } from '../actions/index';
+import BookFormControl from './BookFormControl';
 
 class BookList extends React.Component {
   constructor(props) {
@@ -36,10 +37,10 @@ class BookList extends React.Component {
   }
 
   render() {
-    const { showFilter, filter } = this.props;
+    const { filter } = this.props;
     const { book } = this.props;
     let { bookList, loading } = book;
-    if (showFilter && filter !== 'All') {
+    if (filter !== 'All') {
       bookList = [...bookList].filter(e => e.category === filter);
     }
 
@@ -60,17 +61,13 @@ class BookList extends React.Component {
 
     return (
       <div className="book-list">
-        {
-          showFilter
-          && (
-            <CategoryFilter
-              filter={filter}
-              handleFilter={this.handleFilterChange}
-            />
-          )
-        }
+        <CategoryFilter
+          filter={filter}
+          handleFilter={this.handleFilterChange}
+        />
         {loading && <Loader />}
         {books}
+        <BookFormControl />
       </div>
     );
   }
@@ -86,7 +83,6 @@ BookList.propTypes = {
   deleteBook: PropTypes.func.isRequired,
   updateBookProgress: PropTypes.func.isRequired,
   changeBookFilter: PropTypes.func.isRequired,
-  showFilter: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
