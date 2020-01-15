@@ -16,7 +16,6 @@ const bookReducer = (state = defaultState(), action) => {
       };
 
     case ADD_BOOK_DATA:
-      console.log(action.data);
       const book = action.data.map(e => {
         return {
           id: e.id,
@@ -40,7 +39,7 @@ const bookReducer = (state = defaultState(), action) => {
           ...state.bookList,
           {
             ...book,
-            progress: 1
+            progress: 1,
           },
         ],
       };

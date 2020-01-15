@@ -7,8 +7,11 @@ import { updateBook } from '../actions/index';
 class BookEdit extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    const { id, index, title, author, pages, category, progress } = props.location.state.book
+
+    const {
+      id, index, title, author, pages, category, progress,
+    } = props.location.state.book;
+
     this.state = {
       id,
       index,
@@ -39,7 +42,9 @@ class BookEdit extends React.Component {
     if (progress > pages) {
       progress = pages;
     }
-    updateBook(id, index, { title, author, category, pages, progress });
+    updateBook(id, index, {
+      title, author, category, pages, progress
+    });
     goBack();
   }
 
@@ -73,7 +78,7 @@ BookEdit.propTypes = {
       }).isRequired,
     }).isRequired,
   }).isRequired,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   updateBook: (id, index, data) => {

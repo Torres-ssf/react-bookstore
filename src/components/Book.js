@@ -69,7 +69,11 @@ const Book = (props) => {
       <span className="divider" />
       <div className="display-progress">
         <svg>
-          <circle cx="30" cy="30" r="30" />
+          <circle
+            cx="30"
+            cy="30"
+            r="30"
+          />
           <circle
             stroke={strokeColor}
             strokeDashoffset={progressPercent}

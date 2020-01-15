@@ -1,8 +1,8 @@
 import {
-  FETCH_BOOK_DATA, addBookData, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK
-} from "../actions";
+  FETCH_BOOK_DATA, addBookData, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK,
+} from '../actions';
 
-const booksMiddleware = (store) => (next) => (action) => {
+const booksMiddleware = store => next => action => {
   switch (action.type) {
     case FETCH_BOOK_DATA: {
       next(action);
@@ -19,10 +19,10 @@ const booksMiddleware = (store) => (next) => (action) => {
       fetch('/api/books', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(book)
+        body: JSON.stringify(book),
       }).then(response => {
         console.log(response);
       })
@@ -57,7 +57,7 @@ const booksMiddleware = (store) => (next) => (action) => {
     case UPDATE_BOOK_PROGRESS: {
       next(action);
       const { id, progress } = action;
-      console.log(id)
+      console.log(id);
       fetch(`/api/books/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ progress }),
