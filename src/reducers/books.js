@@ -15,21 +15,21 @@ const bookReducer = (state = defaultState(), action) => {
         loading: true,
       };
 
-    case ADD_BOOK_DATA:
-      const book = action.data.map(e => {
-        return {
-          id: e.id,
-          title: e.title,
-          author: e.author,
-          category: e.category,
-          pages: e.pages,
-          progress: e.progress,
-        };
-      });
+    case ADD_BOOK_DATA: {
+      const book = action.data.map(e => ({
+        id: e.id,
+        title: e.title,
+        author: e.author,
+        category: e.category,
+        pages: e.pages,
+        progress: e.progress,
+      }));
+
       return {
         loading: false,
         bookList: book,
       };
+    }
 
     case ADD_NEW_BOOK: {
       const { book } = action;

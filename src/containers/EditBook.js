@@ -7,7 +7,7 @@ import { updateBook } from '../actions/index';
 class BookEdit extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
     const {
       id, index, title, author, pages, category, progress,
     } = props.location.state.book;
@@ -35,21 +35,25 @@ class BookEdit extends React.Component {
 
   submitHandler(e) {
     e.preventDefault();
-    const { goBack } = this.props.history;
-    const { updateBook } = this.props;
-    const { id, index, title, author, pages, category } = this.state;
+    const { updateBook, history } = this.props;
+    const { goBack } = history;
+    const {
+      id, index, title, author, pages, category,
+    } = this.state;
     let { progress } = this.state;
     if (progress > pages) {
       progress = pages;
     }
     updateBook(id, index, {
-      title, author, category, pages, progress
+      title, author, category, pages, progress,
     });
     goBack();
   }
 
   render() {
-    const { title, author, pages, category } = this.state;
+    const {
+      title, author, pages, category
+    } = this.state;
     return (
       <BookForm
         title={title}
