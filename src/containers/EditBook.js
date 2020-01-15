@@ -66,6 +66,9 @@ class BookEdit extends React.Component {
 }
 
 BookEdit.propTypes = {
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
   location: PropTypes.exact({
     pathname: PropTypes.string.isRequired,
     search: PropTypes.string.isRequired,
