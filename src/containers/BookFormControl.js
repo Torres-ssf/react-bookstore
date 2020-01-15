@@ -57,6 +57,8 @@ class BookFormControl extends React.Component {
         author={author}
         category={category}
         pages={pages}
+        pageTitle="Add New Book"
+        submitName="Add"
         changeHandler={this.handleChange}
         submitHandler={this.handleSubmit}
       />
