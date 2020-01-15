@@ -77,7 +77,9 @@ const Book = (props) => {
           <circle
             stroke={strokeColor}
             strokeDashoffset={progressPercent}
-            cx="30" cy="30" r="30"
+            cx="30"
+            cy="30"
+            r="30"
             style={progressStyles}
             onAnimationEnd={e => animationEnded(e)}
           />

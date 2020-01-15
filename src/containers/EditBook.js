@@ -7,7 +7,7 @@ import { updateBook } from '../actions/index';
 class BookEdit extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     const {
       id, index, title, author, pages, category, progress,
     } = props.location.state.book;
@@ -67,17 +67,23 @@ class BookEdit extends React.Component {
 
 BookEdit.propTypes = {
   location: PropTypes.exact({
+    pathname: PropTypes.string.isRequired,
+    search: PropTypes.string.isRequired,
+    hash: PropTypes.string.isRequired,
     state: PropTypes.exact({
       book: PropTypes.exact({
-        id: PropTypes.number.isRequired,
         index: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         author: PropTypes.string.isRequired,
         category: PropTypes.string.isRequired,
+        pages: PropTypes.number.isRequired,
         progress: PropTypes.number.isRequired,
       }).isRequired,
     }).isRequired,
+    key: PropTypes.string.isRequired,
   }).isRequired,
+  updateBook: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
