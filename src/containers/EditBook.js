@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import BookForm from '../components/BookForm';
 import { updateBook } from '../actions/index';
-import PropTypes from 'prop-types';
 
 class BookEdit extends React.Component {
   constructor(props) {
@@ -56,22 +56,29 @@ class BookEdit extends React.Component {
         changeHandler={this.changeInputHandler}
         submitHandler={this.submitHandler}
       />
-    )
+    );
   }
 }
 
-// BookEdit.propTypes = {
-//   location: PropTypes.object.isRequired,
-//   state: PropTypes.object.isRequired,
-//   book: PropTypes.exact({
-
-//   })
-// }
+BookEdit.propTypes = {
+  location: PropTypes.exact({
+    state: PropTypes.exact({
+      book: PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        index: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        progress: PropTypes.number.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
 
 const mapDispatchToProps = dispatch => ({
   updateBook: (id, index, data) => {
     dispatch(updateBook(id, index, data));
   },
-})
+});
 
 export default connect(null, mapDispatchToProps)(BookEdit);

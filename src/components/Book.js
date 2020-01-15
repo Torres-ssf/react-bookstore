@@ -51,7 +51,7 @@ const Book = (props) => {
               pathname: '/edit-book',
               state: {
                 book,
-              }
+              },
             }}
           >
             Edit

@@ -1,16 +1,17 @@
-import { FETCH_BOOK_DATA, addBookData, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK } from "../actions";
+import {
+  FETCH_BOOK_DATA, addBookData, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK
+} from "../actions";
 
 const booksMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_BOOK_DATA:
-      {
-        next(action);
-        fetch('/api/books')
-          .then(response => response.json())
-          .then(json => store.dispatch(addBookData(json)))
-          .catch(error => console.log(error));
-        break;
-      }
+    case FETCH_BOOK_DATA: {
+      next(action);
+      fetch('/api/books')
+        .then(response => response.json())
+        .then(json => store.dispatch(addBookData(json)))
+        .catch(error => console.log(error));
+      break;
+    }
 
     case ADD_NEW_BOOK: {
       next(action);
@@ -23,9 +24,7 @@ const booksMiddleware = (store) => (next) => (action) => {
         },
         body: JSON.stringify(book)
       }).then(response => {
-        if (response.status === 201) {
-          console.log(new Date().getTime());
-        }
+        console.log(response);
       })
         .catch(error => console.log(error));
       break;
@@ -34,7 +33,7 @@ const booksMiddleware = (store) => (next) => (action) => {
     case UPDATE_BOOK: {
       next(action);
       const { id, data } = action;
-      console.log({...data})
+      console.log({ ...data })
       fetch(`/api/books/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ ...data }),

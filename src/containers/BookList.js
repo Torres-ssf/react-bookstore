@@ -5,7 +5,7 @@ import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
 import {
-  fetchBookData, deleteBook, changeBookFilter, updateBookProgress
+  fetchBookData, deleteBook, changeBookFilter, updateBookProgress,
 } from '../actions/index';
 import BookFormControl from './BookFormControl';
 

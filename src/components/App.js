@@ -11,7 +11,7 @@ const App = () => (
       <Header />
       <Switch>
         <Route path="/" exact component={BookList} />
-        <Route path="/edit-book" render={(props) => <EditBook {...props} />} />
+        <Route path="/edit-book" render={props => <EditBook {...props} />} />
       </Switch>
     </main>
   </Router>

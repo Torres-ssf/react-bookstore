@@ -1,4 +1,6 @@
-import { FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK } from '../actions/index';
+import {
+  FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK,
+} from '../actions/index';
 
 const defaultState = () => ({
   loading: false,
@@ -23,7 +25,7 @@ const bookReducer = (state = defaultState(), action) => {
           category: e.category,
           pages: e.pages,
           progress: e.progress,
-        }
+        };
       });
       return {
         loading: false,
@@ -41,7 +43,7 @@ const bookReducer = (state = defaultState(), action) => {
             progress: 1
           },
         ],
-      }
+      };
     }
 
     case UPDATE_BOOK: {
@@ -56,14 +58,14 @@ const bookReducer = (state = defaultState(), action) => {
           },
           ...state.bookList.slice(index + 1, state.bookList.length),
         ],
-      }
+      };
     }
 
     case DELETE_BOOK:
       return {
         ...state,
         bookList: state.bookList.filter(book => book.id !== action.id),
-      }
+      };
 
 
     case UPDATE_BOOK_PROGRESS: {
@@ -78,7 +80,7 @@ const bookReducer = (state = defaultState(), action) => {
           },
           ...state.bookList.slice(index + 1, state.bookList.length),
         ],
-      }
+      };
     }
 
     default:
