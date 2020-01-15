@@ -32,32 +32,29 @@ class BookList extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchBookData } = this.props;
-    fetchBookData();
+    const { book, fetchBookData } = this.props;
+    const { bookList } = book
+    if (bookList.length === 0) {
+      fetchBookData();
+    }
   }
 
   render() {
     const { filter } = this.props;
     const { book } = this.props;
-    let { bookList, loading } = book;
-    if (filter !== 'All') {
-      bookList = [...bookList].filter(e => e.category === filter);
-    }
+    const { bookList, loading } = book;
 
-    const books = bookList.map((e, i) => (
-      <Book
-        id={e.id}
-        index={i}
-        title={e.title}
-        author={e.author}
-        category={e.category}
-        pages={e.pages}
-        progress={e.progress}
-        updateProgress={this.handleUpdateProgress}
-        key={e.id}
-        deleteHandler={this.handleRemoveBook}
-      />
-    ));
+    const books = bookList.reduce((result, e, i) => {
+      if (filter === 'All' || e.category === filter) {
+        result.push(<Book
+          book={{ index: i, ...e }}
+          updateProgress={this.handleUpdateProgress}
+          key={e.id}
+          deleteHandler={this.handleRemoveBook}
+        />);
+      }
+      return result;
+    }, []);
 
     return (
       <div className="book-list">
