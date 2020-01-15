@@ -65,6 +65,8 @@ BookForm.propTypes = {
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   pages: PropTypes.string.isRequired,
+  pageTitle: PropTypes.func.isRequired,
+  submitName: PropTypes.func.isRequired,
   changeHandler: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
 };

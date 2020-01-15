@@ -1,4 +1,4 @@
-export const FETCH_BOOK_DATA = 'FETCH_BOOK_DATA'
+export const FETCH_BOOK_DATA = 'FETCH_BOOK_DATA';
 export const ADD_BOOK_DATA = 'ADD_BOOK_DATA';
 export const ADD_NEW_BOOK = 'ADD_NEW_BOOK';
 export const UPDATE_BOOK = 'UPDATE_BOOK';

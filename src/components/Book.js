@@ -14,7 +14,7 @@ const Book = (props) => {
   const percentCompleted = Math.floor(book.progress / book.pages * 100);
   const progressPercent = Math.round((1 - (book.progress / book.pages)) * 189);
   const strokeColor = percentCompleted === 100 ? '#32A745' : '#3481c9';
-  const progressStyles = { transition: 'stroke-dashoffset 500ms linear' }
+  const progressStyles = { transition: 'stroke-dashoffset 500ms linear' };
 
   const updateProgressHandler = (e) => {
     toggleForm(!updateForm);
@@ -31,12 +31,13 @@ const Book = (props) => {
       default:
         break;
     }
-  }
+  };
 
   return (
     <div
       className={`book-container ${deleteAnimClass}`}
-      onAnimationEnd={(e) => animationEnded(e)}>
+      onAnimationEnd={e => animationEnded(e)}
+    >
       <div className="book-info">
         <header>
           <span className="category">{book.category}</span>
@@ -59,7 +60,10 @@ const Book = (props) => {
           <button
             className="book-button"
             onClick={() => toggleDeleteAnim('book-disappear')}
-            type="button">Remove</button>
+            type="button"
+          >
+            Remove
+          </button>
         </footer>
       </div>
       <span className="divider" />
@@ -71,7 +75,7 @@ const Book = (props) => {
             strokeDashoffset={progressPercent}
             cx="30" cy="30" r="30"
             style={progressStyles}
-            onAnimationEnd={(e) => animationEnded(e)}
+            onAnimationEnd={e => animationEnded(e)}
           />
         </svg>
         <div className="percent-container">
@@ -97,7 +101,7 @@ const Book = (props) => {
             type="number"
             placeholder="pages"
             value={inputProgress}
-            onChange={(e) => inputProgressUpdate(e.target.value)}
+            onChange={e => inputProgressUpdate(e.target.value)}
             min="1"
             max={book.pages}
           />

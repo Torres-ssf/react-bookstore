@@ -1,11 +1,12 @@
 import React from 'react';
-import BookForm from '../components/BookForm';
 import { connect } from 'react-redux';
+import BookForm from '../components/BookForm';
 import { updateBook } from '../actions/index';
+import PropTypes from 'prop-types';
 
 class BookEdit extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     console.log(props);
     const { id, index, title, author, pages, category, progress } = props.location.state.book
     this.state = {
@@ -58,6 +59,14 @@ class BookEdit extends React.Component {
     )
   }
 }
+
+// BookEdit.propTypes = {
+//   location: PropTypes.object.isRequired,
+//   state: PropTypes.object.isRequired,
+//   book: PropTypes.exact({
+
+//   })
+// }
 
 const mapDispatchToProps = dispatch => ({
   updateBook: (id, index, data) => {

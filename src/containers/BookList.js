@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
-import { fetchBookData, deleteBook, changeBookFilter, updateBookProgress } from '../actions/index';
+import {
+  fetchBookData, deleteBook, changeBookFilter, updateBookProgress
+} from '../actions/index';
 import BookFormControl from './BookFormControl';
 
 class BookList extends React.Component {
@@ -33,7 +35,7 @@ class BookList extends React.Component {
 
   componentDidMount() {
     const { book, fetchBookData } = this.props;
-    const { bookList } = book
+    const { bookList } = book;
     if (bookList.length === 0) {
       fetchBookData();
     }
