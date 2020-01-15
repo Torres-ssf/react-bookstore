@@ -1,4 +1,4 @@
-import { FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS } from '../actions/index';
+import { FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK } from '../actions/index';
 
 const defaultState = () => ({
   loading: false,
@@ -14,12 +14,23 @@ const bookReducer = (state = defaultState(), action) => {
       };
 
     case ADD_BOOK_DATA:
+      console.log(action.data);
+      const book = action.data.map(e => {
+        return {
+          id: e.id,
+          title: e.title,
+          author: e.author,
+          category: e.category,
+          pages: e.pages,
+          progress: e.progress,
+        }
+      });
       return {
         loading: false,
-        bookList: [...action.data],
+        bookList: book,
       };
 
-    case ADD_NEW_BOOK:
+    case ADD_NEW_BOOK: {
       const { book } = action;
       return {
         ...state,
@@ -31,6 +42,22 @@ const bookReducer = (state = defaultState(), action) => {
           },
         ],
       }
+    }
+
+    case UPDATE_BOOK: {
+      const { index, data } = action;
+      return {
+        ...state,
+        bookList: [
+          ...state.bookList.slice(0, index),
+          {
+            ...state.bookList[index],
+            ...data,
+          },
+          ...state.bookList.slice(index + 1, state.bookList.length),
+        ],
+      }
+    }
 
     case DELETE_BOOK:
       return {
