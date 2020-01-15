@@ -315,33 +315,36 @@ a {
   }
 
   .form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     box-sizing: border-box;
-    flex-wrap: wrap;
 
-    .book-input {
-      border-radius: 0.2em;
-      border: 1px solid #d3d3d3;
-      box-sizing: border-box;
-      font-size: 1rem;
-      height: 40px;
-      margin-top: 24px;
-      padding: 6px 12px;
-      flex-basis: 45%;
-    }
+    .input-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
-    .category-select {
-      background-color: transparent;
-      box-sizing: border-box;
-      border-radius: 0.2em;
-      height: 40px;
-      opacity: 0.5;
-      margin-top: 24px;
-      padding: 6px 12px;
-      font-size: 1rem;
-      flex-basis: 45%;
+      .book-input {
+        border-radius: 0.2em;
+        border: 1px solid #d3d3d3;
+        box-sizing: border-box;
+        font-size: 1rem;
+        height: 40px;
+        margin-top: 24px;
+        padding: 6px 12px;
+        flex-basis: 45%;
+      }
+
+      .category-select {
+        background-color: transparent;
+        box-sizing: border-box;
+        border-radius: 0.2em;
+        height: 40px;
+        opacity: 0.5;
+        margin-top: 24px;
+        padding: 6px 12px;
+        font-size: 1rem;
+        flex-basis: 45%;
+      }
     }
 
     .submit-button {
@@ -395,7 +398,6 @@ a {
 }
 
 @media (max-width: 1219px) {
-
   .App {
     margin: 40px;
   }
@@ -468,7 +470,7 @@ a {
   .form-container {
     padding: 0 20px 20px;
     flex-wrap: nowrap;
-    .form {
+    .form .input-container {
       flex-direction: column;
     }
   }
