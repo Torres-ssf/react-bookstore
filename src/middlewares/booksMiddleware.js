@@ -1,12 +1,13 @@
 import { bookActionsNames, bookActions } from '../actions';
+import api from '../services/api';
 
-const booksMiddleware = store => next => (action) => {
-  const { 
-    FETCH_BOOK_DATA, 
-    ADD_NEW_BOOK, 
-    UPDATE_BOOK, 
-    DELETE_BOOK, 
-    UPDATE_BOOK_PROGRESS 
+const booksMiddleware = store => next => async (action) => {
+  const {
+    FETCH_BOOK_DATA,
+    ADD_NEW_BOOK,
+    UPDATE_BOOK,
+    DELETE_BOOK,
+    UPDATE_BOOK_PROGRESS
   } = bookActionsNames;
 
   const { addBookData } = bookActions;
@@ -14,64 +15,74 @@ const booksMiddleware = store => next => (action) => {
   switch (action.type) {
     case FETCH_BOOK_DATA: {
       next(action);
-      fetch('/api/books')
-        .then(response => response.json())
-        .then(json => store.dispatch(addBookData(json)))
-        .catch(error => console.log(error));
+
+      try {
+        const response = await api.get('/books');
+        const { data } = response;
+        store.dispatch(addBookData(data));
+      } catch (error) {
+        console.log(error);
+      }
+
       break;
     }
 
     case ADD_NEW_BOOK: {
       next(action);
       const { book } = action;
-      fetch('/api/books', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(book),
-      }).then(response => {
+
+      try {
+        const response = await api.post('/books', book);
         console.log(response);
-      })
-        .catch(error => console.log(error));
+      } catch (error) {
+        console.log(error);
+      }
+
       break;
     }
 
     case UPDATE_BOOK: {
       next(action);
       const { id, data } = action;
-      fetch(`/api/books/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({ ...data }),
-        headers: {
-          'Content-type': 'application/json'
-        },
-      }).then(response => console.log(response))
-        .catch(error => console.log(error));
+
+      console.log(data);
+
+      try {
+        const response = await api.put(`/books/${id}`, data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+
       break;
     }
 
     case DELETE_BOOK: {
       next(action);
-      fetch(`/api/books/${action.id}`, {
-        method: 'DELETE'
-      }).then(response => console.log(response))
-        .catch(error => console.log(error));
+
+      const { id } = action;
+
+      try {
+        const response = await api.delete(`/books/${id}`);
+        console.log(response)
+      } catch (error) {
+        console.log(error);
+      }
+
       break;
     }
 
     case UPDATE_BOOK_PROGRESS: {
       next(action);
       const { id, progress } = action;
-      fetch(`/api/books/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({ progress }),
-        headers: {
-          'Content-type': 'application/json'
-        },
-      }).then(response => console.log(response))
-        .catch(error => console.log(error));
+
+      try {
+        const response = await api.put(`/books/${id}`, {progress});
+        console.log(response);
+      } catch(error) {
+        console.log(error);
+      }
+
       break;
     }
 
