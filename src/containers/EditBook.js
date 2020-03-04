@@ -44,9 +44,16 @@ class BookEdit extends React.Component {
     if (progress > pages) {
       progress = pages;
     }
-    updateBook(id, index, {
-      title, author, category, pages, progress,
-    });
+    updateBook(
+      id,
+      index,
+      {
+        title,
+        author,
+        category,
+        pages: parseInt(pages, 10),
+        progress: parseInt(progress, 10),
+      });
     goBack();
   }
 
@@ -58,7 +65,7 @@ class BookEdit extends React.Component {
       <BookForm
         title={title}
         author={author}
-        pages={pages}
+        pages={pages.toString()}
         category={category}
         pageTitle="Edit Book"
         submitName="Confirm Edit"

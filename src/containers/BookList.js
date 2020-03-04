@@ -23,7 +23,7 @@ class BookList extends React.Component {
   handleUpdateProgress(e, id, index, progress) {
     e.preventDefault();
     const { updateBookProgress } = this.props;
-    updateBookProgress(id, index, progress);
+    updateBookProgress(id, index, parseInt(progress, 10));
   }
 
   handleFilterChange(e) {
