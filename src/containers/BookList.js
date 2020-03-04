@@ -15,11 +15,6 @@ class BookList extends React.Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
-  handleRemoveBook(id) {
-    const { deleteBook } = this.props;
-    deleteBook(id);
-  }
-
   handleUpdateProgress(e, id, index, progress) {
     e.preventDefault();
     const { updateBookProgress } = this.props;
@@ -37,6 +32,11 @@ class BookList extends React.Component {
     if (bookList.length === 0) {
       fetchBookData();
     }
+  }
+
+  handleRemoveBook(id) {
+    const { deleteBook } = this.props;
+    deleteBook(id);
   }
 
   render() {
