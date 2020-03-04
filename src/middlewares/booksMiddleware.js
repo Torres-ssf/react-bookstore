@@ -1,8 +1,16 @@
-import {
-  FETCH_BOOK_DATA, addBookData, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK,
-} from '../actions';
+import { bookActionsNames, bookActions } from '../actions';
 
 const booksMiddleware = store => next => (action) => {
+  const { 
+    FETCH_BOOK_DATA, 
+    ADD_NEW_BOOK, 
+    UPDATE_BOOK, 
+    DELETE_BOOK, 
+    UPDATE_BOOK_PROGRESS 
+  } = bookActionsNames;
+
+  const { addBookData } = bookActions;
+
   switch (action.type) {
     case FETCH_BOOK_DATA: {
       next(action);
@@ -56,7 +64,6 @@ const booksMiddleware = store => next => (action) => {
     case UPDATE_BOOK_PROGRESS: {
       next(action);
       const { id, progress } = action;
-      console.log(id);
       fetch(`/api/books/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ progress }),

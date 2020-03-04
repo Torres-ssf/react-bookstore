@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import CategoryFilter from '../components/CategoryFilter';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
-import {
-  fetchBookData, deleteBook, changeBookFilter, updateBookProgress,
-} from '../actions/index';
+import { bookActions } from '../actions/index';
 import BookFormControl from './BookFormControl';
 
 class BookList extends React.Component {
@@ -91,6 +89,13 @@ const mapStateToProps = (state) => {
     filter,
   };
 };
+
+const {
+  fetchBookData,
+  deleteBook,
+  updateBookProgress,
+  changeBookFilter,
+} = bookActions;
 
 const mapDispatchToProps = dispatch => ({
   fetchBookData: () => {

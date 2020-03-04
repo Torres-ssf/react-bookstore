@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BookForm from '../components/BookForm';
-import { updateBook } from '../actions/index';
+import { bookActions } from '../actions/index';
 
 class BookEdit extends React.Component {
   constructor(props) {
@@ -92,6 +92,8 @@ BookEdit.propTypes = {
   }).isRequired,
   updateBook: PropTypes.func.isRequired,
 };
+
+const { updateBook } = bookActions;
 
 const mapDispatchToProps = dispatch => ({
   updateBook: (id, index, data) => {

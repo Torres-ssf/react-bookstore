@@ -1,6 +1,4 @@
-import {
-  FETCH_BOOK_DATA, ADD_BOOK_DATA, ADD_NEW_BOOK, DELETE_BOOK, UPDATE_BOOK_PROGRESS, UPDATE_BOOK,
-} from '../actions/index';
+import { bookActionsNames } from '../actions/index';
 
 const defaultState = () => ({
   loading: false,
@@ -8,6 +6,15 @@ const defaultState = () => ({
 });
 
 const bookReducer = (state = defaultState(), action) => {
+  const {
+    FETCH_BOOK_DATA,
+    ADD_BOOK_DATA,
+    ADD_NEW_BOOK,
+    UPDATE_BOOK,
+    DELETE_BOOK,
+    UPDATE_BOOK_PROGRESS,
+  } = bookActionsNames
+
   switch (action.type) {
     case FETCH_BOOK_DATA:
       return {
