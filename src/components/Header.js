@@ -1,32 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Header = (props) => {
-  const { setFilterDisplay } = props;
-
-  return (
-    <header className="page-header">
-      <h1 className="logo">Bookstore CMS</h1>
-      <button
-        className="header-button"
-        type="button"
-        onClick={() => setFilterDisplay(false)}
-      >
-        Books
-      </button>
-      <button
-        className="header-button"
-        type="button"
-        onClick={() => setFilterDisplay(true)}
-      >
-        Categories
-      </button>
-    </header>
-  );
-};
-
-Header.propTypes = {
-  setFilterDisplay: PropTypes.func.isRequired,
-};
+const Header = () => (
+  <header className="page-header">
+    <h1 className="logo">Bookstore CMS</h1>
+    <ul className="nav-list">
+      <Link className="header-button" to="/">
+        <li>Books</li>
+      </Link>
+    </ul>
+  </header>
+);
 
 export default Header;

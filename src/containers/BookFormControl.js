@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BookForm from '../components/BookForm';
-import { createBookMsg } from '../actions/index';
+import { bookActions } from '../actions/index';
 
 class BookFormControl extends React.Component {
   constructor(props) {
@@ -27,13 +27,13 @@ class BookFormControl extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const id = Math.random().toString(36).substr(2, 7);
-    const { createNewBook } = this.props;
+    const { addNewBook } = this.props;
+    const { pages } = this.state;
 
-    createNewBook({
-      id,
+    addNewBook({
+      id: new Date().getTime(),
       ...this.state,
-      progress: '1',
+      pages: parseInt(pages, 10),
     });
     this.setState({
       title: '',
@@ -57,6 +57,8 @@ class BookFormControl extends React.Component {
         author={author}
         category={category}
         pages={pages}
+        pageTitle="Add New Book"
+        submitName="Add"
         changeHandler={this.handleChange}
         submitHandler={this.handleSubmit}
       />
@@ -65,12 +67,14 @@ class BookFormControl extends React.Component {
 }
 
 BookFormControl.propTypes = {
-  createNewBook: PropTypes.func.isRequired,
+  addNewBook: PropTypes.func.isRequired,
 };
 
+const { addNewBook } = bookActions;
+
 const mapDispatchToProps = dispatch => ({
-  createNewBook: (book) => {
-    dispatch(createBookMsg(book));
+  addNewBook: (book) => {
+    dispatch(addNewBook(book));
   },
 });
 

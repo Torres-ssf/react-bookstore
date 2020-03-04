@@ -1,4 +1,6 @@
-import { CHANGE_FILTER } from '../actions/index';
+import { bookActionsNames } from '../actions/index';
+
+const { CHANGE_FILTER } = bookActionsNames;
 
 const filterReducer = (state = 'All', action) => {
   switch (action.type) {
