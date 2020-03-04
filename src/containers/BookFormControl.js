@@ -70,7 +70,7 @@ BookFormControl.propTypes = {
   addNewBook: PropTypes.func.isRequired,
 };
 
-const { addNewBook } = bookActions; 
+const { addNewBook } = bookActions;
 
 const mapDispatchToProps = dispatch => ({
   addNewBook: (book) => {

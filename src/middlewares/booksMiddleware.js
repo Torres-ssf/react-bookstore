@@ -7,7 +7,7 @@ const booksMiddleware = store => next => async (action) => {
     ADD_NEW_BOOK,
     UPDATE_BOOK,
     DELETE_BOOK,
-    UPDATE_BOOK_PROGRESS
+    UPDATE_BOOK_PROGRESS,
   } = bookActionsNames;
 
   const { addBookData } = bookActions;
@@ -21,7 +21,7 @@ const booksMiddleware = store => next => async (action) => {
         const { data } = response;
         store.dispatch(addBookData(data));
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
 
       break;
@@ -33,9 +33,9 @@ const booksMiddleware = store => next => async (action) => {
 
       try {
         const response = await api.post('/books', book);
-        console.log(response);
+        // console.log(response);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
 
       break;
@@ -49,9 +49,9 @@ const booksMiddleware = store => next => async (action) => {
 
       try {
         const response = await api.put(`/books/${id}`, data);
-        console.log(response);
+        // console.log(response);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
 
       break;
@@ -64,9 +64,9 @@ const booksMiddleware = store => next => async (action) => {
 
       try {
         const response = await api.delete(`/books/${id}`);
-        console.log(response)
+        // console.log(response)
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
 
       break;
@@ -77,10 +77,10 @@ const booksMiddleware = store => next => async (action) => {
       const { id, progress } = action;
 
       try {
-        const response = await api.put(`/books/${id}`, {progress});
-        console.log(response);
-      } catch(error) {
-        console.log(error);
+        const response = await api.put(`/books/${id}`, { progress });
+        // console.log(response);
+      } catch (error) {
+        // console.log(error);
       }
 
       break;
@@ -89,6 +89,6 @@ const booksMiddleware = store => next => async (action) => {
     default:
       next(action);
   }
-}
+};
 
 export default booksMiddleware;

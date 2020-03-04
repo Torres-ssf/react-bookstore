@@ -14,7 +14,7 @@ const bookActionsNames = {
   DELETE_BOOK: 'DELETE_BOOK',
   UPDATE_BOOK_PROGRESS: 'UPDATE_BOOK_PROGRESS',
   CHANGE_FILTER: 'CHANGE_FILTER',
-}
+};
 
 const bookActions = {
   fetchBookData: () => ({ type: FETCH_BOOK_DATA }),
@@ -36,4 +36,4 @@ const bookActions = {
   changeBookFilter: category => ({ type: CHANGE_FILTER, category }),
 };
 
-export { bookActionsNames, bookActions  };
+export { bookActionsNames, bookActions };
