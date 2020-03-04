@@ -13,7 +13,7 @@ const bookReducer = (state = defaultState(), action) => {
     UPDATE_BOOK,
     DELETE_BOOK,
     UPDATE_BOOK_PROGRESS,
-  } = bookActionsNames
+  } = bookActionsNames;
 
   switch (action.type) {
     case FETCH_BOOK_DATA:

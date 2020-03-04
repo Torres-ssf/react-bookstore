@@ -53,7 +53,7 @@ class BookEdit extends React.Component {
         category,
         pages: parseInt(pages, 10),
         progress: parseInt(progress, 10),
-      }
+      },
     );
     goBack();
   }

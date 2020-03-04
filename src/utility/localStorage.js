@@ -5,7 +5,6 @@ export const saveToLocalStorage = (state) => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem(STATE, serializedState);
   } catch (e) {
-    console.log(e);
   }
 };
 
