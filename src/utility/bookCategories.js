@@ -1,5 +1,6 @@
 const bookCategories = [
-  'Action',
+  'Adventure',
+  'Romance',
   'Biography',
   'History',
   'Horror',
