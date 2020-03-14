@@ -8,7 +8,7 @@ The objective is to create a simple bookstore app using React and Redux. This ap
 - Edit book.
 - Update book progress.
 - Delete book.
-- Select books by category.
+- Filter books by category.
 
 ## Preview
 
