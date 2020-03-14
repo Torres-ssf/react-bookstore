@@ -1,32 +1,38 @@
 # Bookstore App (React and Redux)
 
-This is the one of the main curriculum projects at [Microverse](https://www.microverse.org/) - @microverseinc
+This project is one of the Main React and Redux curriculum projects at [Microverse](https://https://www.microverse.org/) - @microverseinc
 
-The objective is to create a Bookstore app using React and Redux. 
+The objective is to create a simple bookstore app using React and Redux. This application is integrated with an external API. The API was created with Rails and it's hosted on heroku. All changes made in this demo app are being reflected live in the API. The app features includes:
 
-![screenshot](./app_screenshot.png)
+- Create books.
+- Edit book.
+- Update book progress.
+- Delete book.
+- Filter books by category.
 
-Additional description about the project and its features.
+## Preview
+
+![](./demo.gif)
 
 ## Built With
 
-- React and Redux
+- React.
+- React-Router.
+- Redux.
+- Axios.
+- Node-sass.
 
 ## Live Demo
 
-[Live Demo Link](https://react-bookstore99.herokuapp.com/)
-
+[Live Demo Link](https://ssf-bookstore.herokuapp.com/)
 
 ## Getting Started
 
+Get a local copy cloning the repo and follow these simple steps.
+
 ### Prerequisites
 
-### Setup
-
-```bash
-git clone 
-
-```
+- npm and yarn
 
 ### Install
 
@@ -40,12 +46,6 @@ yarn install
 yarn start
 ```
 
-### Run tests
-
-```bash
-yarn test
-```
-
 ### Deployment
 
 ```bash
@@ -54,13 +54,18 @@ yarn build
 
 ## Authors
 
-👤 **Author1**
+👤 **Sérgio Torres**
 
-- Github: [@Torres-ssf](https://github.com/Torres-ssf)
+- Github: [Torres-ssf](https://github.com/Torres-ssf)
+- Twitter: [@torres_ssf](https://twitter.com/torres_ssf)
+- Linkedin: [torres-ssf](https://www.linkedin.com/in/torres-ssf/)
+
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Torres-ssf/react-bookstore/issues).
 
 ## Show your support
 
@@ -68,4 +73,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](./LICENSE) licensed.
