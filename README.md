@@ -2,7 +2,7 @@
 
 This project is one of the Main React and Redux curriculum projects at [Microverse](https://https://www.microverse.org/) - @microverseinc
 
-The objective is to create a simple bookstore app using React and Redux. This application is integrated with an external API. The API was created with Rails and it's hosted on heroku. All changes made in this demo app are being reflected live in the API. The app features includes:
+The objective is to create a simple bookstore app using React and Redux. This application is integrated with an external API. The API was created with Rails and it's hosted on heroku. All changes made in this app are being saved in the external API. The app features includes:
 
 - Create books.
 - Edit book.
