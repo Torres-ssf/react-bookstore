@@ -24,7 +24,7 @@ The objective is to create a simple bookstore app using React and Redux. This ap
 
 ## Live Demo
 
-[Live Demo Link](https://ssf-bookstore.herokuapp.com/)
+[Live Link](https://ssf-bookstore.netlify.com/)
 
 ## Getting Started
 
