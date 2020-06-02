@@ -2,13 +2,13 @@
 
 This project is one of the Main React and Redux curriculum projects at [Microverse](https://https://www.microverse.org/) - @microverseinc
 
-The objective is to create a simple bookstore app using React and Redux. This application is integrated with an external API. The API was created with Rails and it's hosted on heroku. All changes made in this app are being saved in the external API. The app features includes:
+The objective is to create a simple bookstore app using React and Redux. This application is integrated with an external API. The API was created with Rails and it's hosted on heroku. All changes made in this app are saved in the external API. The app features include:
 
-- Create books.
+- Create book.
 - Edit book.
 - Update book progress.
 - Delete book.
-- Filter books by category.
+- Filter book by category.
 
 ## Preview
 
@@ -22,13 +22,24 @@ The objective is to create a simple bookstore app using React and Redux. This ap
 - Axios.
 - Node-sass.
 
+## Tests
+
+At the current moment, tests were not implemented yet. I will implement unit and integration tests soon.
+
 ## Live Demo
 
 [Live Link](https://ssf-bookstore.netlify.com/)
 
+## Future Updates and Improvements
+
+- I will refactor the application.
+- Apply Unit and Integration tests.
+- Connect with a new API.
+- Improve the UI.
+
 ## Getting Started
 
-Get a local copy cloning the repo and follow these simple steps.
+Get a local copy by cloning the repo and following these simple steps.
 
 ### Prerequisites
 
